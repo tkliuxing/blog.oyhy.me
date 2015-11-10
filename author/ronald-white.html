@@ -1,121 +1,177 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-        <meta charset="utf-8" />
-        <title>OYHY.ME - Ronald White</title>
-        <link rel="stylesheet" href="http://blog.oyhy.me/theme/css/main.css" />
-        <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Atom Feed" />
 
-        <!--[if IE]>
-            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>OYHY.ME - Articles by Ronald White</title>
+
+            <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Full Atom Feed" />
+
+        <!-- Bootstrap Core CSS -->
+        <link href="http://blog.oyhy.me/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="http://blog.oyhy.me/theme/css/clean-blog.min.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="http://blog.oyhy.me/theme/css/code_blocks/monokai.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="http://cdn.staticfile.org/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='http://blog.oyhy.me/theme/css/font.css' rel='stylesheet' type='text/css'>
+        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'> -->
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+		<meta property="og:locale" content="zh">
+		<meta property="og:site_name" content="OYHY.ME">
 </head>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://blog.oyhy.me/">OYHY.ME </a></h1>
-                <nav><ul>
-                    <li><a href="http://blog.oyhy.me/category/coding.html">Coding</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<body>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.oyhy.me/django-client-ip.html">Django获取真实客户端IP</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-11-10T00:00:00+08:00">
-                Published: 二 10 十一月 2015
-        </abbr>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.oyhy.me/">OYHY.ME</a>
+            </div>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
-        </address>
-<p>In <a href="http://blog.oyhy.me/category/coding.html">Coding</a>.</p>
-<p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a> <a href="http://blog.oyhy.me/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><p>Django 老的版本（&lt;=1.6）里一般用 <code>request.META</code> 的 <code>REMOTE_ADDR</code> 或者<code>HTTP_X_FORWARDED_FOR</code> 判断而来。如下：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">get_client_ip</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">x_forwarded_for</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">x_forwarded_for</span><span class="p">:</span>
-        <span class="n">ip</span> <span class="o">=</span> <span class="n">x_forwarded_for</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;REMOTE_ADDR&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ip</span>
-</pre></div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
 
+                                <li><a href="http://blog.oyhy.me/category/coding.html">Coding</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-<p>新版本的 <code>HttpRequest</code> 对象具有一个<code>get_host</code> 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 <code>USE_X_FORWARDED_HOST</code> 为 <code>True</code>。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('http://blog.oyhy.me/theme/images/home-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Articles by Ronald White</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.oyhy.me/django-celery-settings.html" rel="bookmark"
-                           title="Permalink to Django Celery 配置">Django Celery 配置</a></h1>
-                </header>
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-preview">
+            <a href="http://blog.oyhy.me/django-client-ip.html" rel="bookmark" title="Permalink to Django获取真实客户端IP">
+                <h2 class="post-title">
+                    Django获取真实客户端IP
+                </h2>
+            </a>
+                <p>Django 老的版本（&lt;=1.6）里一般用 <code>request.META</code> 的 <code>REMOTE_ADDR</code> 或者<code>HTTP_X_FORWARDED_FOR</code> 判断而来。如下：</p>
+<div ...
+            <p class="post-meta">Posted by
+                    <a href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
+                 on 二 10 十一月 2015
+            </p>
+        </div>
+        <hr>
+        <div class="post-preview">
+            <a href="http://blog.oyhy.me/django-celery-settings.html" rel="bookmark" title="Permalink to Django Celery 配置">
+                <h2 class="post-title">
+                    Django Celery 配置
+                </h2>
+            </a>
+                <p>下面这个例子：</p>
+<ul>
+<li>使用 <code>Redis</code> 作为 broker 和 result backend ...
+            <p class="post-meta">Posted by
+                    <a href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
+                 on 二 14 七月 2015
+            </p>
+        </div>
+        <hr>
 
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2015-07-14T00:00:00+08:00">
-                Published: 二 14 七月 2015
-        </abbr>
+    <!-- Pager -->
+    <ul class="pager">
+        <li class="next">
+        </li>
+    </ul>
+    Page 1 / 1
+    <hr>
+            </div>
+        </div>
+    </div>
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
-        </address>
-<p>In <a href="http://blog.oyhy.me/category/coding.html">Coding</a>.</p>
-<p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a> <a href="http://blog.oyhy.me/tag/python.html">python</a> <a href="http://blog.oyhy.me/tag/celery.html">celery</a> </p>
-</footer><!-- /.post-info -->                <h3>Django Celery 配置</h3>
-<h4>Django settings:</h4>
-<div class="highlight"><pre><span class="c"># Celery</span>
-<span class="n">BROKER_URL</span> <span class="o">=</span> <span class="s">&#39;redis://localhost/1&#39;</span>
-<span class="n">CELERY_RESULT_BACKEND</span> <span class="o">=</span> <span class="s">&#39;redis://localhost/2&#39;</span>
-<span class="n">CELERYD_NODES</span> <span class="o">=</span> <span class="s">&#39;w1 w2 w3&#39;</span>
-<span class="n">CELERYD_MULTI</span> <span class="o">=</span> <span class="s">&#39;celery multi&#39;</span>
-<span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s">&#39;Asia/Shanghai&#39;</span>
-<span class="n">CELERY_ACCEPT_CONTENT</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;pickle&#39;</span><span class="p">,</span> <span class="s">&#39;json&#39;</span><span class="p">]</span>
-<span class="n">CELERYD_LOG_FILE</span><span class="o">=</span><span class="s">&quot;/var/log/celery/%N.log&quot;</span>
-<span class="n">CELERYD_PID_FILE</span><span class="o">=</span><span class="s">&quot;/var/run/celery/%N.pid&quot;</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
-<span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s">&#39;update-access-token-every-5-min&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;myproject.tasks.workerfunc&#39;</span><span class="p">,</span>
-        <span class="s">&#39;schedule ...</span></pre></div>
-                <a class="readmore" href="http://blog.oyhy.me/django-celery-settings.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>blogroll</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+    <hr>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="http://weibo.com/oyhy">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://facebook.com/oyhyo">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://github.com/tkliuxing">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Blog powered by <a href="http://getpelican.com">Pelican</a>,
+                which takes great advantage of <a href="http://python.org">Python</a>.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+    <!-- jQuery -->
+    <script src="http://blog.oyhy.me/theme/js/jquery.js"></script>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://blog.oyhy.me/theme/js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="http://blog.oyhy.me/theme/js/clean-blog.min.js"></script>
 
 </body>
+
 </html>

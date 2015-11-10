@@ -10,10 +10,14 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;新版本的 &lt;code&gt;HttpRequest&lt;/code&gt; 对象具有一个&lt;code&gt;get_host&lt;/code&gt; 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 &lt;code&gt;USE_X_FORWARDED_HOST&lt;/code&gt; 为 &lt;code&gt;True&lt;/code&gt;。&lt;/p&gt;</summary><category term="django"></category><category term="python"></category></entry><entry><title>Django Celery 配置</title><link href="http://blog.oyhy.me/django-celery-settings.html" rel="alternate"></link><updated>2015-07-14T00:00:00+08:00</updated><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2015-07-14:django-celery-settings.html</id><summary type="html">&lt;h3&gt;Django Celery 配置&lt;/h3&gt;
-&lt;h4&gt;Django settings:&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Celery&lt;/span&gt;
-&lt;span class="n"&gt;BROKER_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;redis://localhost/1&amp;#39;&lt;/span&gt;
+&lt;p&gt;新版本的 &lt;code&gt;HttpRequest&lt;/code&gt; 对象具有一个&lt;code&gt;get_host&lt;/code&gt; 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 &lt;code&gt;USE_X_FORWARDED_HOST&lt;/code&gt; 为 &lt;code&gt;True&lt;/code&gt;。&lt;/p&gt;</summary><category term="django"></category><category term="python"></category></entry><entry><title>Django Celery 配置</title><link href="http://blog.oyhy.me/django-celery-settings.html" rel="alternate"></link><updated>2015-07-14T00:00:00+08:00</updated><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2015-07-14:django-celery-settings.html</id><summary type="html">&lt;p&gt;下面这个例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用 &lt;code&gt;Redis&lt;/code&gt; 作为 broker 和 result backend 。&lt;/li&gt;
+&lt;li&gt;配置了任务日志。&lt;/li&gt;
+&lt;li&gt;添加了一个5分钟的周期性任务。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Django settings:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;BROKER_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;redis://localhost/1&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;CELERY_RESULT_BACKEND&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;redis://localhost/2&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;CELERYD_NODES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w1 w2 w3&amp;#39;&lt;/span&gt;
 &lt;span class="n"&gt;CELERYD_MULTI&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;celery multi&amp;#39;&lt;/span&gt;
@@ -32,7 +36,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;h4&gt;开发环境的命令行&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;开发环境的命令行&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;celery -A wxtest worker -l info -B&lt;/code&gt;&lt;/p&gt;
-&lt;h4&gt;发布环境的命令行&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;发布环境的命令行&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;celery -A wxtest beat -s celery_beat_file&lt;/code&gt;&lt;/p&gt;</summary><category term="django"></category><category term="python"></category><category term="celery"></category></entry></feed>
