@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>OYHY.ME</title>
+        <title>Django Celery 配置</title>
         <link rel="stylesheet" href="http://blog.oyhy.me/theme/css/main.css" />
         <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Atom Feed" />
 
@@ -15,48 +15,18 @@
         <header id="banner" class="body">
                 <h1><a href="http://blog.oyhy.me/">OYHY.ME </a></h1>
                 <nav><ul>
-                    <li><a href="http://blog.oyhy.me/category/misc.html">misc</a></li>
+                    <li class="active"><a href="http://blog.oyhy.me/category/misc.html">misc</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="http://blog.oyhy.me/django-celery-settings.html" rel="bookmark"
+           title="Permalink to Django Celery 配置">Django Celery 配置</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://blog.oyhy.me/django-client-ip.html">Django获取真实客户端IP</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2015-11-10T00:00:00+08:00">
-                Published: 二 10 十一月 2015
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
-        </address>
-<p>In <a href="http://blog.oyhy.me/category/misc.html">misc</a>.</p>
-<p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a> <a href="http://blog.oyhy.me/tag/python.html">python</a> </p>
-</footer><!-- /.post-info --><p>Django 老的版本（&lt;=1.6）里一般用 <code>request.META</code> 的 <code>REMOTE_ADDR</code> 或者<code>HTTP_X_FORWARDED_FOR</code> 判断而来。如下：</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">get_client_ip</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">x_forwarded_for</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">x_forwarded_for</span><span class="p">:</span>
-        <span class="n">ip</span> <span class="o">=</span> <span class="n">x_forwarded_for</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;REMOTE_ADDR&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">ip</span>
-</pre></div>
-
-
-<p>新版本的 <code>HttpRequest</code> 对象具有一个<code>get_host</code> 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 <code>USE_X_FORWARDED_HOST</code> 为 <code>True</code>。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="http://blog.oyhy.me/django-celery-settings.html" rel="bookmark"
-                           title="Permalink to Django Celery 配置">Django Celery 配置</a></h1>
-                </header>
-
-                <div class="entry-content">
+    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2015-07-14T00:00:00+08:00">
                 Published: 二 14 七月 2015
@@ -67,7 +37,7 @@
         </address>
 <p>In <a href="http://blog.oyhy.me/category/misc.html">misc</a>.</p>
 <p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a> <a href="http://blog.oyhy.me/tag/python.html">python</a> <a href="http://blog.oyhy.me/tag/celery.html">celery</a> </p>
-</footer><!-- /.post-info -->                <h3>Django Celery 配置</h3>
+</footer><!-- /.post-info -->      <h3>Django Celery 配置</h3>
 <h4>Django settings:</h4>
 <div class="highlight"><pre><span class="c"># Celery</span>
 <span class="n">BROKER_URL</span> <span class="o">=</span> <span class="s">&#39;redis://localhost/1&#39;</span>
@@ -82,12 +52,21 @@
 <span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s">&#39;update-access-token-every-5-min&#39;</span><span class="p">:</span> <span class="p">{</span>
         <span class="s">&#39;task&#39;</span><span class="p">:</span> <span class="s">&#39;myproject.tasks.workerfunc&#39;</span><span class="p">,</span>
-        <span class="s">&#39;schedule ...</span></pre></div>
-                <a class="readmore" href="http://blog.oyhy.me/django-celery-settings.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
+        <span class="s">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+        <span class="s">&#39;args&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h4>开发环境的命令行</h4>
+<p><code>celery -A wxtest worker -l info -B</code></p>
+<h4>发布环境的命令行</h4>
+<p><code>celery -A wxtest beat -s celery_beat_file</code></p>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
