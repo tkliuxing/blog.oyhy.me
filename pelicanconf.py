@@ -44,5 +44,12 @@ FACEBOOK_URL = 'http://facebook.com/oyhyo'
 
 COLOR_SCHEME_CSS = 'monokai.css'
 
+ADDTHIS_PUBID = "ra-57aaee511e054547"
+
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+MD_EXTENSIONS = [
+    'extra',
+    'nl2br'
+]
