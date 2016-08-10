@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-        <title>Django获取真实客户端IP</title>
+        <title>ECMAscript Startup (1)</title>
 
             <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Full Atom Feed" />
             <link href="http://blog.oyhy.me/feeds/coding.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Categories Atom Feed" />
@@ -35,24 +35,25 @@
 
 
 
-        <meta name="description" content="Django 老的版本（<=1.6）里一般用 request.META 的 REMOTE_ADDR 或者HTTP_X_FORWARDED_FOR 判断而来。如下： def get_client_ip(request): x_forwarded_for = ...">
+        <meta name="description" content="ECMAscript 简介 ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。 该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。 但是因为 ES2016 之比 ES2015 增加了两个 ...">
 
         <meta name="author" content="Ronald White">
 
-        <meta name="tags" content="django">
-        <meta name="tags" content="python">
+        <meta name="tags" content="javascript">
+        <meta name="tags" content="ECMAscript">
+        <meta name="tags" content="ES2015">
 
 	                <meta property="og:locale" content="">
 		<meta property="og:site_name" content="OYHY.ME">
 
 	<meta property="og:type" content="article">
             <meta property="article:author" content="http://blog.oyhy.me/author/ronald-white.html">
-	<meta property="og:url" content="http://blog.oyhy.me/django-client-ip.html">
-	<meta property="og:title" content="Django获取真实客户端IP">
-	<meta property="article:published_time" content="2015-11-10 00:00:00+08:00">
-            <meta property="og:description" content="Django 老的版本（<=1.6）里一般用 request.META 的 REMOTE_ADDR 或者HTTP_X_FORWARDED_FOR 判断而来。如下： def get_client_ip(request): x_forwarded_for = ...">
+	<meta property="og:url" content="http://blog.oyhy.me/es-startup-01.html">
+	<meta property="og:title" content="ECMAscript Startup (1)">
+	<meta property="article:published_time" content="2016-08-10 00:00:00+08:00">
+            <meta property="og:description" content="ECMAscript 简介 ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。 该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。 但是因为 ES2016 之比 ES2015 增加了两个 ...">
 
-            <meta property="og:image" content="http://blog.oyhy.me//images/bg1.jpg">
+            <meta property="og:image" content="http://blog.oyhy.me/theme/images/post-bg.jpg">
 </head>
 
 <body>
@@ -84,15 +85,15 @@
     </nav>
 
     <!-- Page Header -->
-        <header class="intro-header" style="background-image: url('/images/bg1.jpg')">
+        <header class="intro-header" style="background-image: url('http://blog.oyhy.me/theme/images/post-bg.jpg')">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Django获取真实客户端IP</h1>
+                        <h1>ECMAscript Startup (1)</h1>
                         <span class="meta">Posted by
                                 <a href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
-                             on 二 10 十一月 2015
+                             on 三 10 八月 2016
                         </span>
                         
                     </div>
@@ -107,21 +108,31 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
     <!-- Post Content -->
     <article>
-        <p>Django 老的版本（&lt;=1.6）里一般用 <code>request.META</code> 的 <code>REMOTE_ADDR</code> 或者<code>HTTP_X_FORWARDED_FOR</code> 判断而来。如下：</p>
-<pre><code class="python">def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+        <h3>ECMAscript 简介</h3>
+<p>ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。<br />
+该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。<br />
+但是因为 ES2016 之比 ES2015 增加了两个 feature ：</p>
+<ul>
+<li>Array.prototype.includes (Domenic Denicola, Rick Waldron)</li>
+<li>Exponentiation Operator (Rick Waldron)</li>
+</ul>
+<p>所以还是从 ES6/ES2015 这个阶段的标准开始认识 ECMAscript 吧。</p>
+<p>** 更多关于 ES 的历史请看 <a href="http://es6.ruanyifeng.com/#docs/intro">这里</a></p>
+<h3>环境准备</h3>
+<h4>nodejs</h4>
+<p>在这个时间点上，nodejs 已经发布了 v6 版本，具体的版本号为 v6.3.0。<br />
+其已经涵盖了绝大多数 ES6 的特性，故而安装此最新版本。</p>
+<h4>babel 转换器</h4>
+<p>Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。<br />
+可使用 npm 安装：</p>
+<pre><code class="sh">npm install --save-dev babel-cli
+npm install --save-dev babel-polyfill
+npm install --save-dev babel-preset-react
 </code></pre>
-
-<p>新版本的 <code>HttpRequest</code> 对象具有一个<code>get_host</code> 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 <code>USE_X_FORWARDED_HOST</code> 为 <code>True</code>。</p>
     </article>
 
         <div class="tags">
-            <p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a>, <a href="http://blog.oyhy.me/tag/python.html">python</a></p>
+            <p>tags: <a href="http://blog.oyhy.me/tag/javascript.html">javascript</a>, <a href="http://blog.oyhy.me/tag/ecmascript.html">ECMAscript</a>, <a href="http://blog.oyhy.me/tag/es2015.html">ES2015</a></p>
         </div>
 
 <div class="sharing">

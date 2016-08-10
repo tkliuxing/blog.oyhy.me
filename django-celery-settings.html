@@ -115,24 +115,23 @@
 <li>添加了一个5分钟的周期性任务。</li>
 </ul>
 <p>Django settings:</p>
-<div class="highlight"><pre><span></span><span class="n">BROKER_URL</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost/1&#39;</span>
-<span class="n">CELERY_RESULT_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost/2&#39;</span>
-<span class="n">CELERYD_NODES</span> <span class="o">=</span> <span class="s1">&#39;w1 w2 w3&#39;</span>
-<span class="n">CELERYD_MULTI</span> <span class="o">=</span> <span class="s1">&#39;celery multi&#39;</span>
-<span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
-<span class="n">CELERY_ACCEPT_CONTENT</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">]</span>
-<span class="n">CELERYD_LOG_FILE</span><span class="o">=</span><span class="s2">&quot;/var/log/celery/%N.log&quot;</span>
-<span class="n">CELERYD_PID_FILE</span><span class="o">=</span><span class="s2">&quot;/var/run/celery/%N.pid&quot;</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
-<span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;update-access-token-every-5-min&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="s1">&#39;myproject.tasks.workerfunc&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="p">[],</span>
-    <span class="p">},</span>
-<span class="p">}</span>
-</pre></div>
-
+<pre><code class="python">BROKER_URL = 'redis://localhost/1'
+CELERY_RESULT_BACKEND = 'redis://localhost/2'
+CELERYD_NODES = 'w1 w2 w3'
+CELERYD_MULTI = 'celery multi'
+CELERY_TIMEZONE = 'Asia/Shanghai'
+CELERY_ACCEPT_CONTENT = ['pickle', 'json']
+CELERYD_LOG_FILE=&quot;/var/log/celery/%N.log&quot;
+CELERYD_PID_FILE=&quot;/var/run/celery/%N.pid&quot;
+from datetime import timedelta
+CELERYBEAT_SCHEDULE = {
+    'update-access-token-every-5-min': {
+        'task': 'myproject.tasks.workerfunc',
+        'schedule': timedelta(minutes=5),
+        'args': [],
+    },
+}
+</code></pre>
 
 <p><em>开发环境的命令行</em></p>
 <p><code>celery -A wxtest worker -l info -B</code></p>
@@ -144,8 +143,23 @@
             <p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a>, <a href="http://blog.oyhy.me/tag/python.html">python</a>, <a href="http://blog.oyhy.me/tag/celery.html">celery</a></p>
         </div>
 
-<hr>
 <div class="sharing">
+        <!-- AddThis Button BEGIN -->
+        <!--<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_compact"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>-->
+        <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57aaee511e054547"></script>
+        <!-- AddThis Button END -->
 </div>
     <hr>
 
