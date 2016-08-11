@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
+'''Help: http://docs.getpelican.com/en/3.6.3/settings.html'''
 from __future__ import unicode_literals
 
 THEME = "themes/pelican-clean-blog"
@@ -49,7 +50,4 @@ ADDTHIS_PUBID = "ra-57aaee511e054547"
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-MD_EXTENSIONS = [
-    'extra',
-    'nl2br'
-]
+MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'nl2br']
