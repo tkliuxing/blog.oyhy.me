@@ -115,23 +115,24 @@
 <li>添加了一个5分钟的周期性任务。</li>
 </ul>
 <p>Django settings:</p>
-<pre><code class="python">BROKER_URL = 'redis://localhost/1'
-CELERY_RESULT_BACKEND = 'redis://localhost/2'
-CELERYD_NODES = 'w1 w2 w3'
-CELERYD_MULTI = 'celery multi'
-CELERY_TIMEZONE = 'Asia/Shanghai'
-CELERY_ACCEPT_CONTENT = ['pickle', 'json']
-CELERYD_LOG_FILE=&quot;/var/log/celery/%N.log&quot;
-CELERYD_PID_FILE=&quot;/var/run/celery/%N.pid&quot;
-from datetime import timedelta
-CELERYBEAT_SCHEDULE = {
-    'update-access-token-every-5-min': {
-        'task': 'myproject.tasks.workerfunc',
-        'schedule': timedelta(minutes=5),
-        'args': [],
-    },
-}
-</code></pre>
+<div class="highlight"><pre><span></span><span class="n">BROKER_URL</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost/1&#39;</span>
+<span class="n">CELERY_RESULT_BACKEND</span> <span class="o">=</span> <span class="s1">&#39;redis://localhost/2&#39;</span>
+<span class="n">CELERYD_NODES</span> <span class="o">=</span> <span class="s1">&#39;w1 w2 w3&#39;</span>
+<span class="n">CELERYD_MULTI</span> <span class="o">=</span> <span class="s1">&#39;celery multi&#39;</span>
+<span class="n">CELERY_TIMEZONE</span> <span class="o">=</span> <span class="s1">&#39;Asia/Shanghai&#39;</span>
+<span class="n">CELERY_ACCEPT_CONTENT</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;json&#39;</span><span class="p">]</span>
+<span class="n">CELERYD_LOG_FILE</span><span class="o">=</span><span class="s2">&quot;/var/log/celery/%N.log&quot;</span>
+<span class="n">CELERYD_PID_FILE</span><span class="o">=</span><span class="s2">&quot;/var/run/celery/%N.pid&quot;</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">timedelta</span>
+<span class="n">CELERYBEAT_SCHEDULE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;update-access-token-every-5-min&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;task&#39;</span><span class="p">:</span> <span class="s1">&#39;myproject.tasks.workerfunc&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;schedule&#39;</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+        <span class="s1">&#39;args&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><em>开发环境的命令行</em></p>
 <p><code>celery -A wxtest worker -l info -B</code></p>

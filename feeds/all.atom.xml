@@ -16,18 +16,19 @@
 &lt;h4&gt;babel 转换器&lt;/h4&gt;
 &lt;p&gt;Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。&lt;br /&gt;
 可使用 npm 安装：&lt;/p&gt;
-&lt;pre&gt;&lt;code class="sh"&gt;npm install --save-dev babel-cli
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm install --save-dev babel-cli
 npm install --save-dev babel-polyfill
 npm install --save-dev babel-preset-react
-&lt;/code&gt;&lt;/pre&gt;</summary><category term="javascript"></category><category term="ECMAscript"></category><category term="ES2015"></category></entry><entry><title>Django获取真实客户端IP</title><link href="http://blog.oyhy.me/django-client-ip.html" rel="alternate"></link><published>2015-11-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2015-11-10:django-client-ip.html</id><summary type="html">&lt;p&gt;Django 老的版本（&amp;lt;=1.6）里一般用 &lt;code&gt;request.META&lt;/code&gt; 的 &lt;code&gt;REMOTE_ADDR&lt;/code&gt; 或者&lt;code&gt;HTTP_X_FORWARDED_FOR&lt;/code&gt; 判断而来。如下：&lt;/p&gt;
-&lt;pre&gt;&lt;code class="python"&gt;def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="javascript"></category><category term="ECMAscript"></category><category term="ES2015"></category></entry><entry><title>Django获取真实客户端IP</title><link href="http://blog.oyhy.me/django-client-ip.html" rel="alternate"></link><published>2015-11-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2015-11-10:django-client-ip.html</id><summary type="html">&lt;p&gt;Django 老的版本（&amp;lt;=1.6）里一般用 &lt;code&gt;request.META&lt;/code&gt; 的 &lt;code&gt;REMOTE_ADDR&lt;/code&gt; 或者&lt;code&gt;HTTP_X_FORWARDED_FOR&lt;/code&gt; 判断而来。如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_client_ip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;x_forwarded_for&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;META&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;HTTP_X_FORWARDED_FOR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;x_forwarded_for&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;x_forwarded_for&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;ip&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;META&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;REMOTE_ADDR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;ip&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;新版本的 &lt;code&gt;HttpRequest&lt;/code&gt; 对象具有一个&lt;code&gt;get_host&lt;/code&gt; 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 &lt;code&gt;USE_X_FORWARDED_HOST&lt;/code&gt; 为 &lt;code&gt;True&lt;/code&gt;。&lt;/p&gt;</summary><category term="django"></category><category term="python"></category></entry><entry><title>Django Celery 配置</title><link href="http://blog.oyhy.me/django-celery-settings.html" rel="alternate"></link><published>2015-07-14T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2015-07-14:django-celery-settings.html</id><summary type="html">&lt;p&gt;下面这个例子：&lt;/p&gt;
 &lt;ul&gt;
@@ -36,23 +37,24 @@ npm install --save-dev babel-preset-react
 &lt;li&gt;添加了一个5分钟的周期性任务。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Django settings:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="python"&gt;BROKER_URL = 'redis://localhost/1'
-CELERY_RESULT_BACKEND = 'redis://localhost/2'
-CELERYD_NODES = 'w1 w2 w3'
-CELERYD_MULTI = 'celery multi'
-CELERY_TIMEZONE = 'Asia/Shanghai'
-CELERY_ACCEPT_CONTENT = ['pickle', 'json']
-CELERYD_LOG_FILE=&amp;quot;/var/log/celery/%N.log&amp;quot;
-CELERYD_PID_FILE=&amp;quot;/var/run/celery/%N.pid&amp;quot;
-from datetime import timedelta
-CELERYBEAT_SCHEDULE = {
-    'update-access-token-every-5-min': {
-        'task': 'myproject.tasks.workerfunc',
-        'schedule': timedelta(minutes=5),
-        'args': [],
-    },
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;BROKER_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;redis://localhost/1&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CELERY_RESULT_BACKEND&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;redis://localhost/2&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CELERYD_NODES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;w1 w2 w3&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CELERYD_MULTI&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;celery multi&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CELERY_TIMEZONE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Asia/Shanghai&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;CELERY_ACCEPT_CONTENT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;pickle&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="n"&gt;CELERYD_LOG_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/log/celery/%N.log&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;CELERYD_PID_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/var/run/celery/%N.pid&amp;quot;&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;datetime&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;
+&lt;span class="n"&gt;CELERYBEAT_SCHEDULE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s1"&gt;&amp;#39;update-access-token-every-5-min&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;task&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;myproject.tasks.workerfunc&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;schedule&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;minutes&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="s1"&gt;&amp;#39;args&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;&lt;em&gt;开发环境的命令行&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;celery -A wxtest worker -l info -B&lt;/code&gt;&lt;/p&gt;

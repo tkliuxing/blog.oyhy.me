@@ -108,14 +108,15 @@
     <!-- Post Content -->
     <article>
         <p>Django 老的版本（&lt;=1.6）里一般用 <code>request.META</code> 的 <code>REMOTE_ADDR</code> 或者<code>HTTP_X_FORWARDED_FOR</code> 判断而来。如下：</p>
-<pre><code class="python">def get_client_ip(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
-</code></pre>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_client_ip</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">x_forwarded_for</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;HTTP_X_FORWARDED_FOR&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x_forwarded_for</span><span class="p">:</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">x_forwarded_for</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ip</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;REMOTE_ADDR&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ip</span>
+</pre></div>
+
 
 <p>新版本的 <code>HttpRequest</code> 对象具有一个<code>get_host</code> 的方法，可以获取客户端的真实IP，在使用反向代理的情况下，还需要配置 settings 中的 <code>USE_X_FORWARDED_HOST</code> 为 <code>True</code>。</p>
     </article>
