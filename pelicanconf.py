@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*- #
 '''Help: http://docs.getpelican.com/en/3.6.3/settings.html'''
 from __future__ import unicode_literals
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 THEME = "themes/pelican-clean-blog"
 DISPLAY_CATEGORIES_ON_MENU = True
@@ -12,6 +15,10 @@ SITENAME = 'OYHY.ME'
 SITEURL = ''
 
 PATH = 'content'
+
+PLUGIN_PATHS = ["plugins", os.path.abspath(os.path.join(BASE_DIR, "../../getpelican/pelican-plugins"))]
+
+PLUGINS = ['extract_toc']
 
 TIMEZONE = 'Asia/Shanghai'
 
@@ -50,4 +57,4 @@ ADDTHIS_PUBID = "ra-57aaee511e054547"
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'nl2br']
+MD_EXTENSIONS = ['codehilite(css_class=highlight)','extra', 'nl2br', 'toc']
