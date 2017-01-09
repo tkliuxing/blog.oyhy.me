@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2016-08-10T00:00:00+08:00</updated><entry><title>ECMAscript Startup (1)</title><link href="http://blog.oyhy.me/es-startup-01.html" rel="alternate"></link><published>2016-08-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2016-08-10:es-startup-01.html</id><summary type="html">&lt;h3&gt;ECMAscript 简介&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2017-01-09T00:00:00+08:00</updated><entry><title>WeRobot 项目截图</title><link href="http://blog.oyhy.me/werobot-screenshots.html" rel="alternate"></link><published>2017-01-09T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2017-01-09:werobot-screenshots.html</id><summary type="html">&lt;h3&gt;用户管理&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_users.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;欢迎信息&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_welcome.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;简单应答&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_message.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;图文消息&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_media.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;图片素材&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_pictures.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;菜单管理&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_menu.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;二维码&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_qrcode.png" /&gt;&lt;/p&gt;
+&lt;h3&gt;公众号绑定&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_accounts.png" /&gt;&lt;/p&gt;</summary><category term="django"></category><category term="python"></category><category term="wechat"></category></entry><entry><title>ECMAscript Startup (1)</title><link href="http://blog.oyhy.me/es-startup-01.html" rel="alternate"></link><published>2016-08-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2016-08-10:es-startup-01.html</id><summary type="html">&lt;h3&gt;ECMAscript 简介&lt;/h3&gt;
 &lt;p&gt;ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。&lt;br /&gt;
 该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。&lt;br /&gt;
 但是因为 ES2016 之比 ES2015 增加了两个 feature ：&lt;/p&gt;
