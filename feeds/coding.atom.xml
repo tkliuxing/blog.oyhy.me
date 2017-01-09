@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/coding.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2017-01-09T00:00:00+08:00</updated><entry><title>WeRobot 项目截图</title><link href="http://blog.oyhy.me/werobot-screenshots.html" rel="alternate"></link><published>2017-01-09T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2017-01-09:werobot-screenshots.html</id><summary type="html">&lt;h3&gt;用户管理&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_users.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;欢迎信息&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_welcome.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;简单应答&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_message.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;图文消息&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_media.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;图片素材&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_pictures.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;菜单管理&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_menu.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;二维码&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_qrcode.png" /&gt;&lt;/p&gt;
-&lt;h3&gt;公众号绑定&lt;/h3&gt;
-&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_accounts.png" /&gt;&lt;/p&gt;</summary><category term="django"></category><category term="python"></category><category term="wechat"></category></entry><entry><title>ECMAscript Startup (1)</title><link href="http://blog.oyhy.me/es-startup-01.html" rel="alternate"></link><published>2016-08-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2016-08-10:es-startup-01.html</id><summary type="html">&lt;h3&gt;ECMAscript 简介&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/coding.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2017-01-09T00:00:00+08:00</updated><entry><title>WeRobot 项目截图</title><link href="http://blog.oyhy.me/werobot-screenshots.html" rel="alternate"></link><published>2017-01-09T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2017-01-09:werobot-screenshots.html</id><summary type="html">
+&lt;h3 id="_1"&gt;用户管理&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_users.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_2"&gt;欢迎信息&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_welcome.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_3"&gt;简单应答&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_message.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_4"&gt;图文消息&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_media.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_5"&gt;图片素材&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_pictures.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_6"&gt;菜单管理&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_menu.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_7"&gt;二维码&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_qrcode.png"/&gt;&lt;/p&gt;
+&lt;h3 id="_8"&gt;公众号绑定&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_accounts.png"/&gt;&lt;/p&gt;</summary><category term="django"></category><category term="python"></category><category term="wechat"></category></entry><entry><title>ECMAscript Startup (1)</title><link href="http://blog.oyhy.me/es-startup-01.html" rel="alternate"></link><published>2016-08-10T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2016-08-10:es-startup-01.html</id><summary type="html">&lt;h3 id="ecmascript"&gt;ECMAscript 简介&lt;/h3&gt;
 &lt;p&gt;ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。&lt;br /&gt;
 该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。&lt;br /&gt;
 但是因为 ES2016 之比 ES2015 增加了两个 feature ：&lt;/p&gt;
@@ -24,11 +25,11 @@
 &lt;/ul&gt;
 &lt;p&gt;所以还是从 ES6/ES2015 这个阶段的标准开始认识 ECMAscript 吧。&lt;/p&gt;
 &lt;p&gt;** 更多关于 ES 的历史请看 &lt;a href="http://es6.ruanyifeng.com/#docs/intro"&gt;这里&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;环境准备&lt;/h3&gt;
-&lt;h4&gt;nodejs&lt;/h4&gt;
+&lt;h3 id="_1"&gt;环境准备&lt;/h3&gt;
+&lt;h4 id="nodejs"&gt;nodejs&lt;/h4&gt;
 &lt;p&gt;在这个时间点上，nodejs 已经发布了 v6 版本，具体的版本号为 v6.3.0。&lt;br /&gt;
 其已经涵盖了绝大多数 ES6 的特性，故而安装此最新版本。&lt;/p&gt;
-&lt;h4&gt;babel 转换器&lt;/h4&gt;
+&lt;h4 id="babel"&gt;babel 转换器&lt;/h4&gt;
 &lt;p&gt;Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。&lt;br /&gt;
 可使用 npm 安装：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm install --save-dev babel-cli

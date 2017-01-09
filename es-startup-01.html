@@ -16,6 +16,7 @@
 
         <!-- Custom CSS -->
         <link href="http://blog.oyhy.me/theme/css/clean-blog.min.css" rel="stylesheet">
+        <link href="http://blog.oyhy.me/theme/css/toc.css" rel="stylesheet">
 
         <!-- Code highlight color scheme -->
             <link href="http://blog.oyhy.me/theme/css/code_blocks/monokai.css" rel="stylesheet">
@@ -106,9 +107,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+
     <!-- Post Content -->
     <article>
-        <h3>ECMAscript 简介</h3>
+        <h3 id="ecmascript">ECMAscript 简介</h3>
 <p>ECMAscript 简称 ES。之前 ECMAscript 发布了5个版本，从 ES1 到 ES5 。<br />
 该标准在2015年后将每年发布一次，所以最新的标准应为 ES2016 。<br />
 但是因为 ES2016 之比 ES2015 增加了两个 feature ：</p>
@@ -118,11 +121,11 @@
 </ul>
 <p>所以还是从 ES6/ES2015 这个阶段的标准开始认识 ECMAscript 吧。</p>
 <p>** 更多关于 ES 的历史请看 <a href="http://es6.ruanyifeng.com/#docs/intro">这里</a></p>
-<h3>环境准备</h3>
-<h4>nodejs</h4>
+<h3 id="_1">环境准备</h3>
+<h4 id="nodejs">nodejs</h4>
 <p>在这个时间点上，nodejs 已经发布了 v6 版本，具体的版本号为 v6.3.0。<br />
 其已经涵盖了绝大多数 ES6 的特性，故而安装此最新版本。</p>
-<h4>babel 转换器</h4>
+<h4 id="babel">babel 转换器</h4>
 <p>Babel是一个广泛使用的ES6转码器，可以将ES6代码转为ES5代码，从而在现有环境执行。<br />
 可使用 npm 安装：</p>
 <div class="highlight"><pre><span></span>npm install --save-dev babel-cli
