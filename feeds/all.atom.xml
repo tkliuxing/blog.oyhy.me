@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2017-01-09T00:00:00+08:00</updated><entry><title>WeRobot 项目截图</title><link href="http://blog.oyhy.me/werobot-screenshots.html" rel="alternate"></link><published>2017-01-09T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2017-01-09:werobot-screenshots.html</id><summary type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>OYHY.ME</title><link href="http://blog.oyhy.me/" rel="alternate"></link><link href="http://blog.oyhy.me/feeds/all.atom.xml" rel="self"></link><id>http://blog.oyhy.me/</id><updated>2018-01-24T00:00:00+08:00</updated><entry><title>Greenplum 在 Ubuntu 上的安装与配置</title><link href="http://blog.oyhy.me/greenplum-on-ubuntu.html" rel="alternate"></link><published>2018-01-24T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2018-01-24:greenplum-on-ubuntu.html</id><summary type="html">&lt;h2 id="_1"&gt;安装&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;参考：&lt;a href="http://greenplum.org/install-greenplum-oss-on-ubuntu/"&gt;来源&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;添加 PPA： &lt;code&gt;sudo add-apt-repository ppa:greenplum/db&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;更新 APT 仓库： &lt;code&gt;sudo apt-get update&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;安装： &lt;code&gt;sudo apt-get install greenplum-db-oss&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装之后，会在&lt;code&gt;/opt/gpdb&lt;/code&gt;目录中添加所有 greenplum 的依赖以及工具。&lt;/p&gt;
+&lt;h3 id="_2"&gt;初始化环境&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;在shell中执行 &lt;code&gt;. /opt/gpdb/greenplum_path.sh&lt;/code&gt;，或添加到 &lt;code&gt;~/.bashrc&lt;/code&gt; 中。&lt;/li&gt;
+&lt;li&gt;拷贝基础配置到项目目录：&lt;code&gt;cp $GPHOME/docs/cli_help/gpconfigs/gpinitsystem_singlenode .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;编辑此文件：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 创建此文件并写入当前主机名&lt;/span&gt;
+&lt;span class="nv"&gt;MACHINE_LIST_FILE&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;./hostlist_singlenode
+
+&lt;span class="c1"&gt;# 编辑以下这行，指定数据目录，并确保目录已经存在，如：&lt;/span&gt;
+&lt;span class="nb"&gt;declare&lt;/span&gt; -a &lt;span class="nv"&gt;DATA_DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;/gpdata1 /gpdata2&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="nb"&gt;declare&lt;/span&gt; -a &lt;span class="nv"&gt;DATA_DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;=(&lt;/span&gt;/home/inovick/primary /home/inovick/primary&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# 修改下面这行，更换为当前主机名&lt;/span&gt;
+&lt;span class="nv"&gt;MASTER_HOSTNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;hostname_of_machine
+&lt;span class="nv"&gt;MASTER_HOSTNAME&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;ubuntu
+
+&lt;span class="c1"&gt;# 修改下面这行，指定 master 数据目录，并确保目录已存在&lt;/span&gt;
+&lt;span class="nv"&gt;MASTER_DIRECTORY&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/home/inovick/master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;初始化数据库连接配置：&lt;code&gt;gpssh-exkeys -f hostlist_singlenode&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;初始化数据库： &lt;code&gt;gpinitsystem -c gpinitsystem_singlenode&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上步骤完成后，数据库就已经启动了，但是在下次启动的时候需要配置环境变量 &lt;code&gt;MASTER_DATA_DIRECTORY&lt;/code&gt;,&lt;br /&gt;
+此变量需要指向配置文件中 &lt;code&gt;MASTER_DIRECTORY&lt;/code&gt; 目录下的 &lt;code&gt;gpsne-1&lt;/code&gt; 目录。&lt;/p&gt;
+&lt;h2 id="greenplum"&gt;配置greenplum&lt;/h2&gt;
+&lt;p&gt;greenplum master的配置文件保存在 &lt;code&gt;MASTER_DIRECTORY&lt;/code&gt; 目录下的 &lt;code&gt;gpsne-1&lt;/code&gt; 目录，&lt;br /&gt;
+包含 postgresql 的相关配置如： &lt;code&gt;pg_hba.conf&lt;/code&gt;, &lt;code&gt;postgresql.conf&lt;/code&gt; 等。&lt;/p&gt;
+&lt;p&gt;编辑相关配置后需要重新reload，reload命令： &lt;code&gt;gpstop -u&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;启动 master 为维护模式，只有管理员可登录： &lt;code&gt;gpstart -m&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;维护终端连接方式：&lt;code&gt;PGOPTIONS='-c gp_session_role=utility' psql postgres&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;完成维护后恢复为生产模式： &lt;code&gt;gpstop -mr&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="greenplum_1"&gt;停止greenplum服务&lt;/h3&gt;
+&lt;p&gt;使用 &lt;code&gt;gpstop&lt;/code&gt; 命令&lt;/p&gt;</summary><category term="postgresql"></category><category term="greenplum"></category><category term="database"></category><category term="ubuntu"></category></entry><entry><title>WeRobot 项目截图</title><link href="http://blog.oyhy.me/werobot-screenshots.html" rel="alternate"></link><published>2017-01-09T00:00:00+08:00</published><author><name>Ronald White</name></author><id>tag:blog.oyhy.me,2017-01-09:werobot-screenshots.html</id><summary type="html">
 &lt;h3 id="_1"&gt;用户管理&lt;/h3&gt;
 &lt;p&gt;&lt;img alt="" src="images/WeRobot_UI_users.png"/&gt;&lt;/p&gt;
 &lt;h3 id="_2"&gt;欢迎信息&lt;/h3&gt;
