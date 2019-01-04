@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>Windows 换行符为什么设计成 CR+LF？</title>
+
+            <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Full Atom Feed" />
+            <link href="http://blog.oyhy.me/feeds/coding.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="http://blog.oyhy.me/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="http://blog.oyhy.me/theme/css/clean-blog.min.css" rel="stylesheet">
+        <link href="http://blog.oyhy.me/theme/css/toc.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="http://blog.oyhy.me/theme/css/code_blocks/monokai.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+        <meta name="description" content="CR 和 LF 最初是控制电传打印机（Teletype，所以 UNIX 里面有个 tty，就是这玩意的缩写）的，CR 把打印头移动到行首，LF 把纸上卷一行，因为 CR 要的时间更长所以一般要求换行的过程里面都是 CR 在前（有些早期设备甚至还会在 CR 和 LF 之间插 ...">
+
+        <meta name="author" content="Ronald White">
+
+        <meta name="tags" content="django">
+        <meta name="tags" content="python">
+        <meta name="tags" content="celery">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="OYHY.ME">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="http://blog.oyhy.me/author/ronald-white.html">
+	<meta property="og:url" content="http://blog.oyhy.me/cl-rf-and-rf.html">
+	<meta property="og:title" content="Windows 换行符为什么设计成 CR+LF？">
+	<meta property="article:published_time" content="2015-07-14 00:00:00+08:00">
+            <meta property="og:description" content="CR 和 LF 最初是控制电传打印机（Teletype，所以 UNIX 里面有个 tty，就是这玩意的缩写）的，CR 把打印头移动到行首，LF 把纸上卷一行，因为 CR 要的时间更长所以一般要求换行的过程里面都是 CR 在前（有些早期设备甚至还会在 CR 和 LF 之间插 ...">
+
+            <meta property="og:image" content="http://blog.oyhy.me/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.oyhy.me/">OYHY.ME</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                                <li class="active"><a href="http://blog.oyhy.me/category/coding.html">Coding</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('http://blog.oyhy.me/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>Windows 换行符为什么设计成 CR+LF？</h1>
+                        <span class="meta">Posted by
+                                <a href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
+                             on 二 14 七月 2015
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+
+    <!-- Post Content -->
+    <article>
+        <p>CR 和 LF 最初是控制电传打印机（Teletype，所以 UNIX 里面有个 tty，就是这玩意的缩写）的，CR 把打印头移动到行首，LF 把纸上卷一行，因为 CR 要的时间更长所以一般要求换行的过程里面都是 CR 在前（有些早期设备甚至还会在 CR 和 LF 之间插 NUL，确保打印头完成复位）。DOS 从 DEC 和 CP/M 那里继承了这个设计，这样文本文件的字节序列可以直接控制打印机。而 Unix 的前身 Multics 里面有一个驱动程序，会自动将 LF 转换成 CR-LF（甚至 CR-NUL-LF），所以他们用了单一的 LF。</p>
+<p>而 Windows 是从 DOS 而来的，所以继承了这个<code>传统</code>。</p>
+    </article>
+
+        <div class="tags">
+            <p>tags: <a href="http://blog.oyhy.me/tag/django.html">django</a>, <a href="http://blog.oyhy.me/tag/python.html">python</a>, <a href="http://blog.oyhy.me/tag/celery.html">celery</a></p>
+        </div>
+
+<div class="sharing">
+        <!-- AddThis Button BEGIN -->
+        <!--<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_compact"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>-->
+        <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57aaee511e054547"></script>
+        <!-- AddThis Button END -->
+</div>
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="http://blog.oyhy.me/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://blog.oyhy.me/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="http://blog.oyhy.me/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
