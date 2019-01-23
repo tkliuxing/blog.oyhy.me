@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+            <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title>npm和yarn的淘宝镜像添加</title>
+
+            <link href="http://blog.oyhy.me/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Full Atom Feed" />
+            <link href="http://blog.oyhy.me/feeds/coding.atom.xml" type="application/atom+xml" rel="alternate" title="OYHY.ME Categories Atom Feed" />
+        <!-- Bootstrap Core CSS -->
+        <link href="http://blog.oyhy.me/theme/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="http://blog.oyhy.me/theme/css/clean-blog.min.css" rel="stylesheet">
+        <link href="http://blog.oyhy.me/theme/css/toc.css" rel="stylesheet">
+
+        <!-- Code highlight color scheme -->
+            <link href="http://blog.oyhy.me/theme/css/code_blocks/monokai.css" rel="stylesheet">
+
+
+        <!-- Custom Fonts -->
+        <link href="http://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
+
+        <meta name="description" content="NPM: npm config set registry https://registry.npm.taobao.org npm config set disturl https://npm.taobao.org/dist npm config set ...">
+
+        <meta name="author" content="Ronald White">
+
+        <meta name="tags" content="node">
+        <meta name="tags" content="javascript">
+        <meta name="tags" content="npm">
+        <meta name="tags" content="yarn">
+
+	                <meta property="og:locale" content="">
+		<meta property="og:site_name" content="OYHY.ME">
+
+	<meta property="og:type" content="article">
+            <meta property="article:author" content="http://blog.oyhy.me/author/ronald-white.html">
+	<meta property="og:url" content="http://blog.oyhy.me/add_npm_yarn_registry.html">
+	<meta property="og:title" content="npm和yarn的淘宝镜像添加">
+	<meta property="article:published_time" content="2019-01-23 00:00:00+08:00">
+            <meta property="og:description" content="NPM: npm config set registry https://registry.npm.taobao.org npm config set disturl https://npm.taobao.org/dist npm config set ...">
+
+            <meta property="og:image" content="http://blog.oyhy.me/theme/images/post-bg.jpg">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.oyhy.me/">OYHY.ME</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                                <li class="active"><a href="http://blog.oyhy.me/category/coding.html">Coding</a></li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+        <header class="intro-header" style="background-image: url('http://blog.oyhy.me/theme/images/post-bg.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>npm和yarn的淘宝镜像添加</h1>
+                        <span class="meta">Posted by
+                                <a href="http://blog.oyhy.me/author/ronald-white.html">Ronald White</a>
+                             on 三 23 一月 2019
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+
+    <!-- Post Content -->
+    <article>
+        <ul>
+<li>NPM:</li>
+</ul>
+<div class="highlight"><pre><span></span>npm config <span class="nb">set</span> registry https://registry.npm.taobao.org
+npm config <span class="nb">set</span> disturl https://npm.taobao.org/dist
+npm config <span class="nb">set</span> electron_mirror https://npm.taobao.org/mirrors/electron/
+npm config <span class="nb">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm config <span class="nb">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
+</pre></div>
+
+
+<ul>
+<li>YARN:</li>
+</ul>
+<div class="highlight"><pre><span></span>yarn config <span class="nb">set</span> registry https://registry.npm.taobao.org -g
+yarn config <span class="nb">set</span> disturl https://npm.taobao.org/dist -g
+yarn config <span class="nb">set</span> electron_mirror https://npm.taobao.org/mirrors/electron/ -g
+yarn config <span class="nb">set</span> sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g
+yarn config <span class="nb">set</span> phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/ -g
+yarn config <span class="nb">set</span> chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver -g
+yarn config <span class="nb">set</span> operadriver_cdnurl https://cdn.npm.taobao.org/dist/operadriver -g
+yarn config <span class="nb">set</span> fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g
+</pre></div>
+
+
+<p>持久化文件路径在</p>
+<p><code>~/.yarnrc</code> 和 <code>~/.npmrc</code></p>
+    </article>
+
+        <div class="tags">
+            <p>tags: <a href="http://blog.oyhy.me/tag/node.html">node</a>, <a href="http://blog.oyhy.me/tag/javascript.html">javascript</a>, <a href="http://blog.oyhy.me/tag/npm.html">npm</a>, <a href="http://blog.oyhy.me/tag/yarn.html">yarn</a></p>
+        </div>
+
+<div class="sharing">
+        <!-- AddThis Button BEGIN -->
+        <!--<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+            <a class="addthis_button_preferred_1"></a>
+            <a class="addthis_button_preferred_2"></a>
+            <a class="addthis_button_preferred_3"></a>
+            <a class="addthis_button_preferred_4"></a>
+            <a class="addthis_button_preferred_5"></a>
+            <a class="addthis_button_preferred_6"></a>
+            <a class="addthis_button_preferred_7"></a>
+            <a class="addthis_button_preferred_8"></a>
+            <a class="addthis_button_preferred_9"></a>
+            <a class="addthis_button_compact"></a>
+            <a class="addthis_counter addthis_bubble_style"></a>
+        </div>-->
+        <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57aaee511e054547"></script>
+        <!-- AddThis Button END -->
+</div>
+    <hr>
+
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                    </ul>
+<p class="copyright text-muted">
+    Blog powered by <a href="http://getpelican.com">Pelican</a>,
+    which takes great advantage of <a href="http://python.org">Python</a>.
+</p>                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="http://blog.oyhy.me/theme/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://blog.oyhy.me/theme/js/bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="http://blog.oyhy.me/theme/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
